@@ -3,19 +3,18 @@
 
 from datetime import datetime
 from uuid import uuid4
-from models import storage
+import models
 
 
 class BaseModel:
     """Represents a class for base model of object hierachy."""
 
-
-    def __init__(self), *args, **kwargs):
-        """Initialization of a Base instance.
+    def __init__(self, *args, **kwargs):
+        """Initializes of a base instance.
 
         Args:
-            - *args: list of arguments
-            - **kwargs: dict of key-values arguments
+            - *args (tuple): list of arguements
+            - **kwargs (dict): dict of key, value arguements
         """
 
         if kwargs is not None and kwargs != {}:
@@ -30,10 +29,10 @@ class BaseModel:
                     self.__dict__[key] = kwargs[key]
 
         else:
-            self.id = str(uuid.uuid4())
+            self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
 
     def __str__(self):
@@ -42,11 +41,12 @@ class BaseModel:
         return "[{}] ({}) {}"\
             .format(self.__class__.__name__, self.id, self.__dict__)
 
+
     def save(self):
         """Updates the public instance attribute with the current datetime."""
 
-        self.updated_at = datetime.datetime.now()
-        storage.save()
+        #models.storage.save()
+        self.updated_at = datetime.now()
 
 
     def to_dict(self):
