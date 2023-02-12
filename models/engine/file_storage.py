@@ -2,7 +2,6 @@
 """Defines a class that serializes instances to JSON file & deserializes JSON file to instances
 """
 import json
-from models.base_model import BaseModel
 from os.path import exists
 
 

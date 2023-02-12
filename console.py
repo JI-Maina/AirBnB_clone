@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """Defines entry point of the command interpreter."""
 
 import cmd
@@ -10,7 +11,8 @@ class HBNBCommand(cmd.Cmd):
     """Contains the entry point of command interpreter."""
 
     prompt = '(hbnb) '
-    class_names = ['BaseModel']
+    class_names = ['BaseModel', 'User', 'State', 'City',
+            'Amenity', 'Place', 'Review']
 
     def do_create(self, line):
         """Creates new instance of BaseModel, saves it (to file) & prints id."""
@@ -20,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
         elif line not in self.class_names:
             print("** class doesn't exist **")
         else:
-            instance = BaseModel()
+            instance = eval(line)()
             instance.save()
             print(instance.id)
 
