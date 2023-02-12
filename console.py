@@ -16,11 +16,18 @@ class HBNBCommand(cmd.Cmd):
     """Contains the entry point of command interpreter."""
 
     prompt = '(hbnb) '
-    class_names = ['BaseModel', 'User', 'State', 'City', 'Amenity',
-            'Place', 'Review']
+    class_names = [
+            'BaseModel',
+            'User',
+            'State',
+            'City',
+            'Amenity',
+            'Place',
+            'Review'
+            ]
 
     def do_create(self, line):
-        """Creates new instance of BaseModel, saves it (to file) & prints id."""
+        """Creates new instance of BaseModel, saves it & prints id."""
 
         if line == '':
             print("** class name missing **")
@@ -51,7 +58,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Deletes an instance based on cls name & id (and saves change)."""
-        
+
         if not line:
             print("** class name missing **")
         else:
@@ -85,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """Updates an instance based on cls name & id by adding or updating."""
-        
+
         if not line:
             print("** class name missing **")
             return False
@@ -119,6 +126,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         pass
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
