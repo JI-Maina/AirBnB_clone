@@ -27,13 +27,11 @@ class BaseModel:
                         kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[key] = kwargs[key]
-
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
-
 
     def __str__(self):
         """Returns a string representation on the instance."""
@@ -41,13 +39,11 @@ class BaseModel:
         return "[{}] ({}) {}"\
             .format(self.__class__.__name__, self.id, self.__dict__)
 
-
     def save(self):
         """Updates the public instance attribute with the current datetime."""
 
         models.storage.save()
         self.updated_at = datetime.now()
-
 
     def to_dict(self):
         """Returns a dict containing all keys/values of the instance."""

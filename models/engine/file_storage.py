@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""Defines a class that serializes instances to JSON file & deserializes JSON file to instances
-"""
+"""Defines a class that serializes instances to JSON file
+    & deserializes JSON file to instances."""
+
 import json
 from models.base_model import BaseModel
 from os.path import exists
@@ -8,7 +9,7 @@ from os.path import exists
 
 class FileStorage:
     """Represents a storage class.
-    
+
     Attributes:
         __file_path (str): path to the JSON file
         __objects (dict): stores all obects
