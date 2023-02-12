@@ -5,6 +5,7 @@
 import json
 from models.base_model import BaseModel
 from os.path import exists
+from models.user import User
 
 
 class FileStorage:

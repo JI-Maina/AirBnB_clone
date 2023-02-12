@@ -4,13 +4,14 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """Contains the entry point of command interpreter."""
 
     prompt = '(hbnb) '
-    class_names = ['BaseModel']
+    class_names = ['BaseModel', 'User']
 
     def do_create(self, line):
         """Creates new instance of BaseModel, saves it (to file) & prints id."""
@@ -20,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
         elif line not in self.class_names:
             print("** class doesn't exist **")
         else:
-            instance = BaseModel()
+            instance = eval(line)()
             instance.save()
             print(instance.id)
 
@@ -86,7 +87,6 @@ class HBNBCommand(cmd.Cmd):
         if line[0] in self.class_names:
             if len(line) > 1:
                 key = line[0] + '.' + line[1]
-                print(key)
                 if key in storage.all():
                     if len(line) > 2:
                         if len(line) > 3:
