@@ -25,7 +25,7 @@ class FileStorage:
         Args:
             obj (dict): dictionary representation of an instance.
         """
-        name = self.__class__.__name__
+        name = obj.__class__.__name__
         FileStorage.__objects['{}.{}'.format(name, obj.id)] = obj
 
     def save(self):
