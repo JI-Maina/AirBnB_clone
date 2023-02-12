@@ -5,13 +5,19 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
     """Contains the entry point of command interpreter."""
 
     prompt = '(hbnb) '
-    class_names = ['BaseModel', 'User']
+    class_names = ['BaseModel', 'User', 'State', 'City', 'Amenity',
+            'Place', 'Review']
 
     def do_create(self, line):
         """Creates new instance of BaseModel, saves it (to file) & prints id."""
