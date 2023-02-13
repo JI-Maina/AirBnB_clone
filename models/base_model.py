@@ -16,7 +16,6 @@ class BaseModel:
             - *args (tuple): list of arguements
             - **kwargs (dict): dict of key, value arguements
         """
-
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
                 if key == "created_at":
@@ -35,19 +34,16 @@ class BaseModel:
 
     def __str__(self):
         """Returns a string representation on the instance."""
-
         return "[{}] ({}) {}"\
             .format(self.__class__.__name__, self.id, self.__dict__)
 
     def save(self):
         """Updates the public instance attribute with the current datetime."""
-
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """Returns a dict containing all keys/values of the instance."""
-
         dict1 = self.__dict__.copy()
         dict1['__class__'] = self.__class__.__name__
         dict1['updated_at'] = self.updated_at.isoformat()
