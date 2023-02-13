@@ -34,6 +34,7 @@ class BaseModel:
 
     def __str__(self):
         """Returns a string representation on the instance."""
+
         return "[{}] ({}) {}"\
             .format(self.__class__.__name__, self.id, self.__dict__)
 
@@ -46,6 +47,6 @@ class BaseModel:
         """Returns a dict containing all keys/values of the instance."""
         dict1 = self.__dict__.copy()
         dict1['__class__'] = self.__class__.__name__
-        dict1['updated_at'] = self.updated_at.isoformat()
         dict1['created_at'] = self.created_at.isoformat()
+        dict1['updated_at'] = self.updated_at.isoformat()
         return dict1
