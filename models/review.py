@@ -12,7 +12,6 @@ class Review(BaseModel):
         - user_id (str): user identity
         - text (str): comment
     """
-
     place_id = ""
     user_id = ""
     text = ""
